@@ -15,8 +15,13 @@ public class Model {
      * @return area's value
      */
     public double area(){
-        double radians = Math.toRadians(angle);
-        return 0.5 * sideA * sideB * Math.sin(radians);
+        if (sideA < 1 || sideB < 1 ||
+                angle < 0 || angle > 180){
+            throw new IllegalArgumentException("Wrong input argument(s)!");
+        }else {
+            double radians = Math.toRadians(angle);
+            return 0.5 * sideA * sideB * Math.sin(radians);
+        }
     }
 
     public void setSideA(int sideA) {
